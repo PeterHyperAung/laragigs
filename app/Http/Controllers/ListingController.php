@@ -61,9 +61,6 @@ class ListingController extends Controller
 
     public function update(Request $request, Listing $listing){
         static::checkCurrentUser($listing->user_id);
-        if($listing->user_id != auth()->id()){
-            abort(403, 'Unauthorized Action');
-        }
 
          $formFields = $request->validate([
             'title' => 'required',
